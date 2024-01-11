@@ -1,5 +1,5 @@
 .container-wrapper__input-wrapper {
-    background: #fff;
+    background: var(--white);
     width: 100%;
     max-width: 634px;
     opacity: 20%;

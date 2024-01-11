@@ -1,0 +1,50 @@
+.container-wrapper__container-cards-films {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.container-cards-films__card {
+    max-width: 1224px;
+    background: var(--background-card);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+
+.card__wrapper-img,
+.card__title-film {
+    align-self: center;
+}
+
+.card__img-film {
+    width: 139px;
+    border-radius: 100%;
+}
+
+.card__info-film {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card__info-film__favorite-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.favorite-wrapper__text img {
+    position: relative;
+    top: 1px;
+    margin-right: .5rem;
+}
+
+.card__text-description {
+    line-height: 31px;
+    font-weight: 500;
+    font-size: .8rem;
+    color: var(--text-description);
+}
