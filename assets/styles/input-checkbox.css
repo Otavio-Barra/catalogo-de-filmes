@@ -1,0 +1,15 @@
+.checkbox-wrapper__checkbox {
+    -webkit-appearance: none;
+    border: 1px solid #706EA8;
+    background-color: transparent;
+    width: 12px;
+    height: 12px;
+}
+
+.checkbox-wrapper__checkbox:checked {
+    background-color: #706EA8;
+}
+
+.checkbox-wrapper__text-label {
+    font-size: 0.8rem;
+}

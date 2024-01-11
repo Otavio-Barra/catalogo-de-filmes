@@ -1,0 +1,36 @@
+.container-wrapper__input-wrapper {
+    background: #fff;
+    width: 100%;
+    max-width: 634px;
+    opacity: 20%;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-wrapper__input {
+    width: 100%;
+}
+
+.input-wrapper__input:focus {
+    border: 0;
+    outline: 0;
+}
+
+.input-wrapper__input::-webkit-input-placeholder {
+    font-size: 0.8rem;
+
+}
+
+.input-wrapper__input::-moz-placeholder {
+    font-size: 0.8rem;
+}
+
+.input-wrapper__input:-ms-input-placeholder {
+    font-size: 0.8rem;
+}
+
+.input-wrapper__input:-moz-placeholder {
+    font-size: 0.8rem;
+}
