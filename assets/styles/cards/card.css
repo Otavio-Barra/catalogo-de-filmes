@@ -3,11 +3,16 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    max-width: 1224px;
+    max-width: 122.4rem;
     padding: 2rem;
-
 }
 
 .card__title-film {
     align-self: center;
+}
+
+@media screen and (min-width:980px) {
+    .container-cards-films__card {
+        flex-direction: row;
+    }
 }

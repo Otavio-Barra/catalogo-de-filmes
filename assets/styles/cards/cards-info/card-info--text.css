@@ -1,10 +1,34 @@
 .card__info-film__favorite-wrapper {
+    align-items: start;
     display: flex;
     justify-content: space-around;
 }
 
-.favorite-wrapper__text img {
-    margin-right: .5rem;
+.card__info-film__favorite-wrapper :nth-child(2) {
+    cursor: pointer;
+}
+
+.favorite-wrapper__text {
+    font-size: 1.8rem;
+}
+
+.favorite-wrapper__heart::before {
+    content: url("/assets/imgs/Heart.svg");
+    margin-right: 5px;
     position: relative;
     top: 1px;
+}
+
+.favorite-wrapper__star::before {
+    content: url("/assets/imgs/star.svg");
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
+
+@media screen and (min-width:980px) {
+    .card__info-film__favorite-wrapper {
+        justify-content: inherit;
+        gap: 4rem;
+    }
 }

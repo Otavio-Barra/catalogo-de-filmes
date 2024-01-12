@@ -1,0 +1,9 @@
+.card__title-film {
+    font-size: 1.8rem;
+}
+
+@media screen and (min-width:980px) {
+    .card__title-film {
+        align-self: self-start;
+    }
+}

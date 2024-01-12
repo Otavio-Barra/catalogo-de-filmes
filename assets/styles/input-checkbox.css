@@ -2,8 +2,8 @@
     -webkit-appearance: none;
     border: 1px solid var(--purple-checkbox);
     background-color: transparent;
-    height: 12px;
-    width: 12px;
+    height: 1.2rem;
+    width: 1.2rem;
 }
 
 .checkbox-wrapper__checkbox:checked {
@@ -11,5 +11,5 @@
 }
 
 .checkbox-wrapper__text-label {
-    font-size: 0.8rem;
+    font-size: 1.4rem;
 }

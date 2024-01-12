@@ -1,6 +1,8 @@
 .card__text-description {
+    align-self: center;
     color: var(--text-description);
+    flex: 1 2 25%;
     font-weight: 500;
-    font-size: .8rem;
-    line-height: 24px;
+    font-size: clamp(.8rem, 4vw, 1.6rem);
+    line-height: 2.4rem;
 }

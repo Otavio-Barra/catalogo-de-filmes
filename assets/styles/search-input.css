@@ -1,15 +1,16 @@
 .container-wrapper__input-wrapper {
     background: var(--white);
-    border-radius: 10px;
+    border-radius: 1rem;
     display: flex;
     justify-content: space-between;
-    max-width: 634px;
+    max-width: 64.4rem;
     opacity: 20%;
-    padding: 1rem;
+    padding: 1.6rem;
     width: 100%;
 }
 
 .input-wrapper__input {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
     width: 100%;
 }
 
@@ -19,17 +20,21 @@
 }
 
 .input-wrapper__input::-webkit-input-placeholder {
-    font-size: 0.8rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
 .input-wrapper__input::-moz-placeholder {
-    font-size: 0.8rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
 .input-wrapper__input:-ms-input-placeholder {
-    font-size: 0.8rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
 .input-wrapper__input:-moz-placeholder {
-    font-size: 0.8rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.container-wrapper__input-wrapper a::before {
+    content: url("/assets/imgs/search-icon.svg");
 }
