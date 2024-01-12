@@ -2,8 +2,8 @@
     -webkit-appearance: none;
     border: 1px solid var(--purple-checkbox);
     background-color: transparent;
-    width: 12px;
     height: 12px;
+    width: 12px;
 }
 
 .checkbox-wrapper__checkbox:checked {

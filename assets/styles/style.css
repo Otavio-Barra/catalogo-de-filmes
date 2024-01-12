@@ -1,9 +1,9 @@
 :root {
     --background-main: #17162E;
-    --purple-checkbox: #706EA8;
-    --white: #fff;
     --background-card: #1D1C3B;
-    --text-description: #ACACAC
+    --purple-checkbox: #706EA8;
+    --text-description: #ACACAC;
+    --white: #fff;
 }
 
 body {

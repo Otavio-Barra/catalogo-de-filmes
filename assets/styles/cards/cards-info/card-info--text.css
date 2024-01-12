@@ -1,0 +1,10 @@
+.card__info-film__favorite-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.favorite-wrapper__text img {
+    margin-right: .5rem;
+    position: relative;
+    top: 1px;
+}

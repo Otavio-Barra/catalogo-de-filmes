@@ -1,0 +1,8 @@
+.card__wrapper-img {
+    align-self: center;
+}
+
+.card__img-film {
+    border-radius: 100%;
+    width: 139px;
+}

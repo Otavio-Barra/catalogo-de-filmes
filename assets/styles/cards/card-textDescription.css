@@ -1,0 +1,6 @@
+.card__text-description {
+    color: var(--text-description);
+    font-weight: 500;
+    font-size: .8rem;
+    line-height: 24px;
+}

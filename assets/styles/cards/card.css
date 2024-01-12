@@ -1,0 +1,13 @@
+.container-cards-films__card {
+    background: var(--background-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1224px;
+    padding: 2rem;
+
+}
+
+.card__title-film {
+    align-self: center;
+}

@@ -1,12 +1,12 @@
 .container-wrapper__input-wrapper {
     background: var(--white);
-    width: 100%;
-    max-width: 634px;
-    opacity: 20%;
-    padding: 1rem;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+    max-width: 634px;
+    opacity: 20%;
+    padding: 1rem;
+    width: 100%;
 }
 
 .input-wrapper__input {
@@ -20,7 +20,6 @@
 
 .input-wrapper__input::-webkit-input-placeholder {
     font-size: 0.8rem;
-
 }
 
 .input-wrapper__input::-moz-placeholder {

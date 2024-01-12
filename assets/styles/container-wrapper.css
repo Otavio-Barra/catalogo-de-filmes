@@ -1,8 +1,8 @@
 .container-wrapper {
-    margin: 4rem auto;
-    width: min(80vw, 1440px);
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1.5rem;
+    margin: 4rem auto;
+    width: min(80vw, 1440px);
 }

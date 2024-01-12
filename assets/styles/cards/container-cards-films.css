@@ -1,0 +1,6 @@
+.container-wrapper__container-cards-films {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2rem;
+}
