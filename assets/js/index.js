@@ -1,3 +1,5 @@
+import {apiKey} from './apiKey.js';
+
 function criarFilme(movies){
   let {image,title,rating,year,description,isFavorited} = movies
 const articleCard = document.createElement("article");
@@ -40,6 +42,22 @@ divWrapperImg.appendChild(imgMovieCover);
 divInfoFilm.append(h2TitleFilm,divWrapperRateFilm);
 divWrapperRateFilm.append(pTextStar,pTextHeart);
 }
+async function getPuplarMovies(){
+  const apiUrl = "https://api.themoviedb.org/3/movie/popular"
+  try {
+  const responde = await fetch(`${apiUrl}?api_key=${apiKey}`)
+  const data = await responde.json()
+  return data.results
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function main(){
+  const movies = await getPuplarMovies();
+  console.log(movies);
+}
+main()
 
 const containerCards = document.querySelector(".container-wrapper__container-cards-films");
 
