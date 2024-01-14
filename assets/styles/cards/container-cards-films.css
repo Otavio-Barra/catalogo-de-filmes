@@ -1,6 +1,7 @@
 .container-wrapper__container-cards-films {
+    align-items: center;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     gap: 2.4rem;
+    width: 100%;
 }

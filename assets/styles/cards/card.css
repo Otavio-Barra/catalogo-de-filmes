@@ -1,10 +1,12 @@
 .container-cards-films__card {
     background: var(--background-card);
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
     max-width: 122.4rem;
     padding: 2rem;
+    width: 100%;
 }
 
 .card__title-film {

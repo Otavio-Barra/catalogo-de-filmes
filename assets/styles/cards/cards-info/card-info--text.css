@@ -18,6 +18,12 @@
     position: relative;
     top: 1px;
 }
+.favorite-wrapper__heart-fill::before {
+    content: url("/assets/imgs/Heart-fill-red.svg");
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
 
 .favorite-wrapper__star::before {
     content: url("/assets/imgs/star.svg");
