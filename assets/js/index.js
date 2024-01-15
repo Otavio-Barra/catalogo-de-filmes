@@ -1,7 +1,8 @@
 import { apiKey } from './apiKey.js';
 
-function criarFilme(movies) {
-  let { poster_path, original_title, vote_average, release_date, overview, isFavorited } = movies
+function createMovie(movies) {
+  let { poster_path, title, vote_average, release_date, overview } = movies
+  const isFavorited = false
   const articleCard = document.createElement("article");
   articleCard.classList.add("container-cards-films__card");
 
@@ -18,7 +19,7 @@ function criarFilme(movies) {
 
   const h2TitleFilm = document.createElement("h2");
   h2TitleFilm.classList.add("card__title-film");
-  h2TitleFilm.innerText = `${original_title} (${release_date})`;
+  h2TitleFilm.innerText = `${title} (${release_date.slice(0, 4)})`;
 
   const divWrapperRateFilm = document.createElement("div");
   divWrapperRateFilm.classList.add("card__info-film__favorite-wrapper");
@@ -44,48 +45,53 @@ function criarFilme(movies) {
 }
 
 async function getPuplarMovies() {
-  const apiUrl = "https://api.themoviedb.org/3/movie/popular"
+  const apiUrl = "https://api.themoviedb.org/3/movie/popular";
   try {
-    const responde = await fetch(`${apiUrl}?api_key=${apiKey}`)
+    const responde = await fetch(`${apiUrl}?api_key=${apiKey}`);
+    const data = await responde.json();
+    return data.results;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function searchMovie(query) {
+  const urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+  try {
+    const responde = await fetch(urlSearch)
     const data = await responde.json()
     return data.results
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
 async function main() {
   const movies = await getPuplarMovies();
-  movies.forEach(movie => criarFilme(movie))
-  console.log(movies);
+  const search = await searchMovie(input.value);
+  console.log(search.length);
+  if (input.value === "") {
+    containerCards.innerHTML = ""
+    movies.forEach(movie => createMovie(movie));
+  } else if (input.value.length > 0 && search.length > 0) {
+    containerCards.innerHTML = ""
+    search.forEach(movie => createMovie(movie))
+    input.value = ""
+  } else {
+    alert("Filme nao encontrado, digite um filme valido")
+    input.value = ""
+  }
 }
-main()
 
 const containerCards = document.querySelector(".container-wrapper__container-cards-films");
+const input = document.querySelector("#film-name");
+input.addEventListener('keydown', (e) => {
+  if (e.key === "Enter") {
+    main()
+  }
+})
 
-// const movies = [
-//   {
-//     image: 'https://img.elo7.com.br/product/original/3FBA809/big-poster-filme-batman-2022-90x60-cm-lo002-poster-batman.jpg',
-//     title: 'Batman',
-//     rating: 9.2,
-//     year: 2022,
-//     description: "Descrição do filme…",
-//     isFavorited: true,
-//   },
-//   {
-//     image: 'https://upload.wikimedia.org/wikipedia/pt/thumb/9/9b/Avengers_Endgame.jpg/250px-Avengers_Endgame.jpg',
-//     title: 'Avengers',
-//     rating: 9.2,
-//     year: 2019,
-//     description: "Descrição do filme…",
-//     isFavorited: false
-//   },
-//   {
-//     image: 'https://upload.wikimedia.org/wikipedia/en/1/17/Doctor_Strange_in_the_Multiverse_of_Madness_poster.jpg',
-//     title: 'Doctor Strange',
-//     rating: 9.2,
-//     year: 2022,
-//     description: "Descrição do filme…",
-//     isFavorited: false
-//   },
-// ]
+const iconSearch = document.querySelector("#search")
+iconSearch.addEventListener("click", main)
+
+main()
