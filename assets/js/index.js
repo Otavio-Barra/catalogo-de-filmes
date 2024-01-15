@@ -69,7 +69,6 @@ async function searchMovie(query) {
 async function main() {
   const movies = await getPuplarMovies();
   const search = await searchMovie(input.value);
-  console.log(search.length);
   if (input.value === "") {
     containerCards.innerHTML = ""
     movies.forEach(movie => createMovie(movie));
