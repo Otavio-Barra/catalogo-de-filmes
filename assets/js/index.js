@@ -1,7 +1,17 @@
 import { apiKey } from './apiKey.js';
-
+// function trailer(movieName) {
+//   const formattedMovieName = movieName.replace(/\s+/g, '-')
+//   return `https://megafilmeshd50.org/filme/${formattedMovieName}/`
+// }
 function createMovie(movies) {
   let { poster_path, title, vote_average, release_date, overview } = movies
+  // const trailerMovie = trailer(title)
+  // const linkTrailer = document.createElement("a")
+  // linkTrailer.classList.add("favorite-wrapper__text");
+  // linkTrailer.setAttribute("href", trailerMovie)
+  // linkTrailer.setAttribute("target", "_blank")
+  // linkTrailer.innerText = "assista ao trailer"
+
   const isFavorited = false
   const articleCard = document.createElement("article");
   articleCard.classList.add("container-cards-films__card");
@@ -49,6 +59,7 @@ async function getPuplarMovies() {
   try {
     const responde = await fetch(`${apiUrl}?api_key=${apiKey}`);
     const data = await responde.json();
+    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error(error);
@@ -67,15 +78,14 @@ async function searchMovie(query) {
 }
 
 async function main() {
-  const movies = await getPuplarMovies();
-  const search = await searchMovie(input.value);
+  const movies = await getPuplarMovies()
+  const search = await searchMovie(input.value.toLowerCase());
   if (input.value === "") {
     containerCards.innerHTML = ""
     movies.forEach(movie => createMovie(movie));
   } else if (input.value.length > 0 && search.length > 0) {
     containerCards.innerHTML = ""
     search.forEach(movie => createMovie(movie))
-    input.value = ""
   } else {
     alert("Filme nao encontrado, digite um filme valido")
     input.value = ""
@@ -84,13 +94,7 @@ async function main() {
 
 const containerCards = document.querySelector(".container-wrapper__container-cards-films");
 const input = document.querySelector("#film-name");
-input.addEventListener('keydown', (e) => {
-  if (e.key === "Enter") {
-    main()
-  }
-})
+input.addEventListener('input', main)
 
-const iconSearch = document.querySelector("#search")
-iconSearch.addEventListener("click", main)
 
 main()
