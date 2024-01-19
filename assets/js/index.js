@@ -5,7 +5,7 @@ import { apiKey } from './apiKey.js';
 // }
 function createMovie(movies) {
   let { id, poster_path, title, vote_average, release_date, overview } = movies
-  const isFvorited = checkMovieIsFavorited(id)
+  const isFavorited = checkMovieIsFavorited(id)
   // const trailerMovie = trailer(title)
   // const linkTrailer = document.createElement("a")
   // linkTrailer.classList.add("favorite-wrapper__text");
@@ -13,7 +13,6 @@ function createMovie(movies) {
   // linkTrailer.setAttribute("target", "_blank")
   // linkTrailer.innerText = "assista ao trailer"
 
-  const isFavorited = false
   const articleCard = document.createElement("article");
   articleCard.classList.add("container-cards-films__card");
 
@@ -85,7 +84,6 @@ function saveToLocalStorage(movie) {
   movies.push(movie)
   const moviesJSON = JSON.stringify(movies)
   localStorage.setItem('favoriteMovies', moviesJSON)
-  console.log(movies);
 }
 
 function checkMovieIsFavorited(id) {
@@ -108,7 +106,6 @@ async function getPuplarMovies() {
   try {
     const responde = await fetch(`${apiUrl}?api_key=${apiKey}`);
     const data = await responde.json();
-    // console.log(data.results);
     return data.results;
   } catch (error) {
     console.error(error);
@@ -147,6 +144,19 @@ async function main() {
 const containerCards = document.querySelector(".container-wrapper__container-cards-films");
 const input = document.querySelector("#film-name");
 input.addEventListener('input', main)
+
+const checkbox = document.querySelector('#favorite-filme')
+checkbox.addEventListener("click", () => {
+  const favoriteMovies = getFavoriteMovies()
+  if (checkbox.checked && favoriteMovies.length > 0) {
+    containerCards.innerHTML = ""
+    favoriteMovies.forEach(movie => createMovie(movie))
+  } else if (checkbox.checked && favoriteMovies.length == 0) {
+    alert('lista de favoritos vazia')
+  } else {
+    main()
+  }
+})
 
 
 main()
