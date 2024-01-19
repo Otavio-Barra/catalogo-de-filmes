@@ -12,17 +12,10 @@
     font-size: 1.8rem;
 }
 
-.favorite-wrapper__heart::before {
-    content: url("/assets/imgs/Heart.svg");
-    margin-right: 5px;
-    position: relative;
-    top: 1px;
-}
-.favorite-wrapper__heart-fill::before {
-    content: url("/assets/imgs/Heart-fill-red.svg");
-    margin-right: 5px;
-    position: relative;
-    top: 1px;
+.wrapper__favorite-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
 }
 
 .favorite-wrapper__star::before {
