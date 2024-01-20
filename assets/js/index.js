@@ -1,17 +1,23 @@
 import { apiKey } from './apiKey.js';
-// function trailer(movieName) {
-//   const formattedMovieName = movieName.replace(/\s+/g, '-')
-//   return `https://megafilmeshd50.org/filme/${formattedMovieName}/`
-// }
+const containerCards = document.querySelector(".container-wrapper__container-cards-films");
+const input = document.querySelector("#film-name");
+const checkbox = document.querySelector('#favorite-filme')
+input.addEventListener('input', main)
+checkbox.addEventListener("click", () => {
+  const favoriteMovies = getFavoriteMovies()
+  if (checkbox.checked && favoriteMovies.length > 0) {
+    containerCards.innerHTML = ""
+    favoriteMovies.forEach(movie => createMovie(movie))
+  } else if (checkbox.checked && favoriteMovies.length == 0) {
+    alert('lista de favoritos vazia')
+  } else {
+    main()
+  }
+})
+
 function createMovie(movies) {
   let { id, poster_path, title, vote_average, release_date, overview } = movies
   const isFavorited = checkMovieIsFavorited(id)
-  // const trailerMovie = trailer(title)
-  // const linkTrailer = document.createElement("a")
-  // linkTrailer.classList.add("favorite-wrapper__text");
-  // linkTrailer.setAttribute("href", trailerMovie)
-  // linkTrailer.setAttribute("target", "_blank")
-  // linkTrailer.innerText = "assista ao trailer"
 
   const articleCard = document.createElement("article");
   articleCard.classList.add("container-cards-films__card");
@@ -23,6 +29,7 @@ function createMovie(movies) {
   imgMovieCover.classList.add("card__img-film");
   imgMovieCover.setAttribute("src", `https://image.tmdb.org/t/p/w500/${poster_path}`);
   imgMovieCover.setAttribute("alt", "capa filme");
+  imgMovieCover.setAttribute("loading", "lazy");
 
   const divInfoFilm = document.createElement("div");
   divInfoFilm.classList.add("card__info-film");
@@ -98,9 +105,6 @@ function removeFromLocalStorage(id) {
   localStorage.setItem('favoriteMovies', JSON.stringify(newMovies))
 }
 
-
-
-
 async function getPuplarMovies() {
   const apiUrl = "https://api.themoviedb.org/3/movie/popular";
   try {
@@ -129,7 +133,6 @@ async function main() {
   if (input.value === "") {
     containerCards.innerHTML = ""
     movies.forEach(movie => createMovie(movie));
-    // favoritar()
   } else if (input.value.length > 0 && search.length > 0) {
     containerCards.innerHTML = ""
     search.forEach(movie => createMovie(movie))
@@ -139,24 +142,4 @@ async function main() {
   }
 }
 
-
-
-const containerCards = document.querySelector(".container-wrapper__container-cards-films");
-const input = document.querySelector("#film-name");
-input.addEventListener('input', main)
-
-const checkbox = document.querySelector('#favorite-filme')
-checkbox.addEventListener("click", () => {
-  const favoriteMovies = getFavoriteMovies()
-  if (checkbox.checked && favoriteMovies.length > 0) {
-    containerCards.innerHTML = ""
-    favoriteMovies.forEach(movie => createMovie(movie))
-  } else if (checkbox.checked && favoriteMovies.length == 0) {
-    alert('lista de favoritos vazia')
-  } else {
-    main()
-  }
-})
-
-
-main()
+window.onload = main()
